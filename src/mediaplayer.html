@@ -1,0 +1,91 @@
+<html>
+    
+    <head>
+        <script>
+            
+            function changeVideo(name) {
+                document.getElementById("video").setAttribute('src', "assets/" + name + ".mp4")
+            }
+
+            function openFullscreen() {
+                document.getElementById("video").requestFullscreen();    
+            }   
+
+        </script>
+        
+        <style>
+            html, body {
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .titlebar {
+                height: 48px;
+                width: 100%;
+                background-color: #3f51b5;
+                color: white;
+                -webkit-app-region: drag;
+                user-select: none;
+                display: flex;
+                align-items: center;
+                padding-left: 12px;
+                box-sizing: border-box;
+            }
+
+            .mediaplayer {
+                position: relative;
+                display: flex;
+                align-items: center;
+                background-color: black;
+                z-index: 0;
+                flex-grow: 1;
+            }
+
+            video {
+                width: 100%; 
+                height: 100%; 
+                background-color: black;
+                z-index: 1;
+            }
+            video::-webkit-media-controls {
+                display:none !important;
+            }
+
+            button {
+                opacity: 0;
+                position: absolute;
+                z-index: 2;
+                top: 0px;
+                left: 0px;
+                border: none;
+                background-color: transparent;
+                width: 100%;
+                height: 100%;       
+            }
+            button:hover {
+                opacity: 1;
+            }
+            
+            img {
+                width: 50%;
+                height: 50%;
+                opacity: 0.5;
+            }
+            img:hover {
+                opacity: 1;
+            }
+
+        </style>
+    </head>
+    
+    <body>
+        <div class="titlebar">DragMe!</div>
+        <div class="mediaplayer">
+            <video id="video" src="assets/chika.mp4" autoplay></video>
+            <button onclick="openFullscreen()">
+                <img src="assets/fullscreen.svg" />
+            </button>
+        </div>
+    </body>
+</html>
